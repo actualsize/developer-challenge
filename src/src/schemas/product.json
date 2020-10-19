@@ -1,0 +1,42 @@
+{
+  "Main" : {
+    "image" : {
+      "type" : "Image",
+      "config" : {
+        "constraint" : {
+          "width" : 600
+        },
+        "thumbnails" : [ ],
+        "label" : "Image"
+      }
+    },
+    "title" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading1",
+        "label" : "Title"
+      }
+    },
+    "description" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph",
+        "label" : "Description"
+      }
+    },
+    "quantity" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "paragraph",
+        "label" : "Quantity"
+      }
+    },
+    "type" : {
+      "type" : "Select",
+      "config" : {
+        "options" : [ "DESSERT", "SOUP", "PET FOOD" ],
+        "label" : "type"
+      }
+    }
+  }
+}
