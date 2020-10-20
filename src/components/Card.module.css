@@ -1,0 +1,104 @@
+/* CARD MODULE STYLES */
+
+/*
+    styles for main card container;
+    colors and spacing from parent
+    variables (in index.jsx).
+*/
+.card_container {
+    position: relative;
+
+    box-sizing: border-box;
+    width: 330px;
+    height: 600px;
+
+    padding: var(--padding);
+
+    border-radius: var(--card-radius);
+    color: var(--dark);
+    background-color: var(--light);
+}
+
+/* positioning for logo above card */
+/* NB: the image in this implementation is slightly larger than in the spec. */
+.card_logo {
+    position: absolute;
+    top: -70px; /* this is a bad magic number that I got from eyeballing the spec */
+    left: var(--card-radius);
+    color: #ffffffdd; /* slightly transparent, per spec */
+}
+
+/*
+    sizing and positioning for image at top of card
+    the image overflow and positioning is pretty hack-y
+    i used flexbox and styling on the image to preserve aspect ratio
+    but two of the images were too short to fill the container given their width
+    potential fixes: work with the size parameters from the query, or ensure
+    all product images are cropped to size before being added to database
+*/
+.card_img {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    overflow: hidden;
+    height: 247.5px; /* initial golden ratio height for img */
+    width: 100%;
+
+    position: absolute;
+    top: -1px; /* prevent clipping */
+    left: 0;
+
+    border-top-left-radius: var(--card-radius); /* this is slightly ugly and clips a bit */
+    border-top-right-radius: var(--card-radius); /* if I had more time, I would mess around with z-index to pretty it up */
+}
+
+/* slightly hacky image sizing */
+.card_img img {
+    width: 120%;
+    height: auto;
+}
+
+/* sizing and defaults for body of card */
+.card_body {
+    box-sizing: border-box;
+    height: 352.5px; /* remaining golden ratio height for body */
+
+    padding: var(--padding);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    font-family: "Jura";
+    display: flex;
+    flex-direction: column;
+}
+
+/* styles for elements inside body of card */
+
+.card_body h1 {
+    font-size: 2rem;
+    font-family: "Lobster";
+    font-weight: normal;
+}
+
+.card_body p {
+    font-size: 0.875rem; /* another magic size gleaned thru guess-and-test */
+}
+
+.card_body button {
+    height: 60px;
+    width: 100%;
+
+    margin-top: auto; /* align to bottom within flexbox */
+    border-radius: 15px;
+
+    /* override browser defaults */
+    background-color: var(--accent);
+    color: var(--light);
+    border: none;
+    outline: none;
+
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}

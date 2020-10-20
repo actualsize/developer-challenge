@@ -1,0 +1,39 @@
+/* MENU STYLES */
+
+.menu_container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+
+    box-sizing: border-box;
+    width: 100%;
+    height: calc(var(--padding) * 3); /* padding top and bottom, container is height of padding */
+    padding: var(--padding);
+
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    color: var(--light);
+    font-family: "Jura";
+    font-size: 0.85rem;
+}
+
+/* styles for font awesome icons */
+.menu_container svg {
+    height: var(--padding);
+    width: var(--padding)!important;
+}
+
+/* styles for menu items */
+.menu_container > div {
+    padding: 0.1rem 0.75rem 0.2rem 0.75rem; /* equal spacing on sides, top/bottom padding for font display */
+    border-radius: 15px; /* magic number */
+}
+
+/* background for active menu item */
+.active {
+    background-color: var(--accent);
+}

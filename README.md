@@ -50,3 +50,11 @@ Recreate this page, using Gatsby & React (with functional components and hooks):
 	}
 	```
 
+## General Comments
+
+This is the implemented version of the developer challenge specification. It uses functional components and hooks to manage state and rendering. Data is destructured and passed to components. The Card component took the most time and has the most moving parts, but the Menu is a bit more complicated engineering-wise, given its subcomponents and data flow (it can mutate state).
+
+* CSS is written in modules for the two components. I'm most comfortable with this paradigm and didn't feel now was the time to learn CSS-in-JS properly.
+* As you mentioned in the interview, there are some gaps in the spec that I "filled in". I tried to comment anywhere there was a value I arrived at by guess-and-test or that was an unavoidable magic number, but I think I did a pretty good job interpreting the letter and spirit of the spec.
+* I would not default to absolutely-positioning items as I did with the card. I did this specifically because the challenge stated the card does not have to be responsive and is designed for one specific screen size.
+* I used the `gatsby-plugin-fontawesome-css` because I've used it before and like doing that rendering on the compile-side rather than the front-end.
