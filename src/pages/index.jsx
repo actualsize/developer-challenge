@@ -23,7 +23,7 @@ const Container = styled.div`
 	align-items: center;
 	flex-direction: column;
 
-	background-color: #c0ffee;
+	background-color: #7855DA;
 	color: #43d1e7;
 
 	font-family: "Lobster";
@@ -31,6 +31,8 @@ const Container = styled.div`
 `;
 
 // ========= MAIN =========
+//current prdoct
+var product = "DESSERT";
 const Index = ({ data }) => {
 	// get the product data from prisma
 	const item = data.prismicProduct.data;
@@ -49,6 +51,32 @@ const Index = ({ data }) => {
 					I want {item.quantity.text} of{` `}
 					{item.title.text}, please.
 				</div>
+				<div
+					css={css`
+						font-family: Jura;
+					`}
+				>
+					{item.description.text}
+				</div>
+				<div
+					css={css`
+						font-family: Jura;
+						height: 370px;
+						width: 330px;
+						overflow: hidden;
+						position: relative;
+					`}
+				>
+					<img 
+						css={css`
+							position: absolute;
+							bottom: 0;
+							width: 100%;
+						`}
+						src="https://images.prismic.io/developer-challenge/6ba17dc8-723d-463b-ae5c-b0ba6579f153_deva-williamson-ymy-t_sKkNk-unsplash.jpg?auto=format%2Ccompress&rect=0%2C0%2C640%2C960&w=600&h=900&fit=max&q=50" 
+						alt="Yellow cupcakes with green paper wrap and rainbow frosting"
+					></img>
+				</div>
 				<Logo />
 			</Container>
 		</>
@@ -60,16 +88,19 @@ export default Index;
 // ========= QUERY =========
 // use gatsby's graphql query to get required data
 export const query = graphql`
-	query {
-		prismicProduct(data: { type: { eq: "SOUP" } }) {
+	query MyQuery {
+		prismicProduct(data: {type: {eq: "DESSERT"}}) {
 			id
 			data {
-				title {
-					text
-				}
-				quantity {
-					text
-				}
+			title {
+				text
+			}
+			quantity {
+				text
+			}
+			description {
+				text
+			}
 			}
 		}
 	}
