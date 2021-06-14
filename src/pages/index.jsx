@@ -1,16 +1,13 @@
-// Modified by Philip Williamson on June 6th, 2021
 import React from "react";
 import { graphql } from "gatsby";
 import "normalize.css";
 import styled from "@emotion/styled";
 import SEO from "../components/SEO";
-import ActiveProductProvider from "../providers/activeProductProvider";
-import CallbackProvider from "../providers/CallbackProvider";
+import ActiveProductProvider from "../contextProviders/ActiveProductProvider";
+import CallbackProvider from "../contextProviders/CallbackProvider";
 import LogoContainer from "../components/LogoContainer";
 import Card from "../components/Card";
-
 import Navbar from "../components/NavBar";
-import "../styles/style.css";
 
 // ========= COMPONENTS =========
 
@@ -35,31 +32,30 @@ const Container = styled.div`
 `;
 
 // ========= MAIN =========
-// current prdoct
 const Index = ({ data }) => {
-	// useEffect(() => {
-	// 	document.querySelector(`#desserts-button`).focus();
-	// }, []);
-
 	// get the product data from prisma
-	// convert nodes array from our query to an object with
-	// the product type as the key for each product data value
+	// convert nodes array from our graphql query to an object with
+	// the product types as keys amd product data as values
+	// should make it easier to access data via product type
 	const products = Object.assign(
 		{},
 		...data.allPrismicProduct.nodes.map((product) => ({
 			[product.data.type]: product.data,
 		}))
 	);
-	//
+
 	return (
 		<>
 			{/* set the page metadata */}
-			<SEO title="Welcome to the Challenge" />
+			<SEO title="Philip Williamson's Submission" />
 
 			<Container>
+				<LogoContainer />
+				{/* context provider for the currently active product */}
 				<ActiveProductProvider>
-					<LogoContainer />
+					{/* context provider for callback function between Card and OrderButton */}
 					<CallbackProvider>
+						{/* Card component takes products object as prop */}
 						<Card products={products} />
 					</CallbackProvider>
 					<Navbar />

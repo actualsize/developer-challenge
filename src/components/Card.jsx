@@ -1,19 +1,25 @@
+// div component containg image and body children for Card
+// accesses active item from context provider
 import React from "react";
 import { css } from "@emotion/core";
-import { useActiveProductContext } from "../providers/activeProductProvider";
-import { useCallbackUpdateContext } from "../providers/CallbackProvider";
+import { useActiveProductContext } from "../contextProviders/ActiveProductProvider";
+import { useCallbackUpdateContext } from "../contextProviders/CallbackProvider";
 import ImageContainer from "./ImageContainer";
 import BodyContainer from "./BodyContainer";
 
-const callbackForButton = () => {
-	console.log(`Order button clicked`);
+// callback function that will be used by Orderbutton
+const callbackForOrderButton = () => {
+	console.log(`Order button clicked.`);
 };
 
 export default function Card({ products }) {
+	// get active product from active product context
 	const activeProduct = useActiveProductContext();
 
+	// get setState function from callback context provider and
+	// set the callback function as state variable
 	const updateCallback = useCallbackUpdateContext();
-	updateCallback(() => callbackForButton);
+	updateCallback(() => callbackForOrderButton);
 
 	return (
 		<div
@@ -24,9 +30,11 @@ export default function Card({ products }) {
 
 				border-radius: 50px;
 
+				overflow: hidden;
+
 				background-color: white;
 
-				overflow: hidden;
+				box-shadow: 0px 3px 10px #444;
 			`}
 		>
 			<ImageContainer product={products[activeProduct]} />

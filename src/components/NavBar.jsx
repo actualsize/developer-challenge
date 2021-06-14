@@ -1,95 +1,53 @@
+// navbar for switching displayed content
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { css } from "@emotion/core";
 import {
 	faUserCircle,
 	faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
-import {
-	useActiveProductContext,
-	useActiveProductUpdateContext,
-} from "../providers/activeProductProvider";
+import Navbutton from "./Navbutton";
+import Iconbutton from "./Iconbutton";
 
 export default function Navbar() {
-	const activeProduct = useActiveProductContext();
-	const updateActiveProduct = useActiveProductUpdateContext();
 	return (
-		<div className="navbar-container">
-			<ul className="navbar">
-				<li>
-					<FontAwesomeIcon
-						icon={faUserCircle}
-						size="xs"
-						color="white"
-						transform="up-2.5"
-						onClick={() => {
-							console.log(`User icon clicked.`);
-						}}
-					/>
-				</li>
-				<li>
-					<button
-						type="button"
-						className="link-button"
-						style={{
-							backgroundColor:
-								activeProduct === `SOUP`
-									? `#DA55BD`
-									: `transparent`,
-						}}
-						onClick={() => {
-							updateActiveProduct(`SOUP`);
-						}}
-					>
-						SOUP
-					</button>
-				</li>
-				<li>
-					<button
-						type="button"
-						className="link-button"
-						style={{
-							backgroundColor:
-								activeProduct === `DESSERT`
-									? `#DA55BD`
-									: `transparent`,
-						}}
-						onClick={() => {
-							updateActiveProduct(`DESSERT`);
-						}}
-					>
-						DESSERTS
-					</button>
-				</li>
-				<li>
-					<button
-						type="button"
-						className="link-button"
-						style={{
-							backgroundColor:
-								activeProduct === `PET FOOD`
-									? `#DA55BD`
-									: `transparent`,
-						}}
-						onClick={() => {
-							updateActiveProduct(`PET FOOD`);
-						}}
-					>
-						PET FOOD
-					</button>
-				</li>
-				<li>
-					<FontAwesomeIcon
-						icon={faShoppingCart}
-						size="xs"
-						color="white"
-						transform="up-2.5"
-						onClick={() => {
-							console.log(
-								`Shopping cart icon clicked.`
-							);
-						}}
-					/>
-				</li>
+		<div
+			className="navbar-container"
+			css={css`
+				position: absolute;
+				bottom: 0;
+			`}
+		>
+			{/* user list of nav items
+			icons only trigger console.log()
+			buttons update active product and 
+			their backgrounds are determined by active product */}
+			<ul
+				className="navbar"
+				css={css`
+					width: 310px;
+					height: 30px;
+
+					padding: 0 0;
+					margin: 30px 0;
+
+					display: flex;
+					align-items: stretch;
+					justify-content: space-between;
+
+					list-style-type: none;
+				`}
+			>
+				<Iconbutton
+					iconType={faUserCircle}
+					consoleMessage="User icon clicked."
+				/>
+				<Navbutton productType="SOUP" />
+				<Navbutton productType="DESSERT" />
+				<Navbutton productType="PET FOOD" />
+				<Iconbutton
+					iconType={faShoppingCart}
+					consoleMessage="Shopping cart icon clicked."
+				/>
 			</ul>
 		</div>
 	);
