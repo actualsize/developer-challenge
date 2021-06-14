@@ -1,12 +1,16 @@
+// Modified by Philip Williamson on June 6th, 2021
 import React from "react";
 import { graphql } from "gatsby";
-
 import "normalize.css";
 import styled from "@emotion/styled";
-import { css } from "@emotion/core";
-
 import SEO from "../components/SEO";
-import { ReactComponent as Logo } from "../assets/Logo.svg";
+import ActiveProductProvider from "../providers/activeProductProvider";
+import CallbackProvider from "../providers/CallbackProvider";
+import LogoContainer from "../components/LogoContainer";
+import Card from "../components/Card";
+
+import Navbar from "../components/NavBar";
+import "../styles/style.css";
 
 // ========= COMPONENTS =========
 
@@ -23,7 +27,7 @@ const Container = styled.div`
 	align-items: center;
 	flex-direction: column;
 
-	background-color: #7855DA;
+	background-color: #7855da;
 	color: #43d1e7;
 
 	font-family: "Lobster";
@@ -31,53 +35,35 @@ const Container = styled.div`
 `;
 
 // ========= MAIN =========
-//current prdoct
-var product = "DESSERT";
+// current prdoct
 const Index = ({ data }) => {
-	// get the product data from prisma
-	const item = data.prismicProduct.data;
+	// useEffect(() => {
+	// 	document.querySelector(`#desserts-button`).focus();
+	// }, []);
 
+	// get the product data from prisma
+	// convert nodes array from our query to an object with
+	// the product type as the key for each product data value
+	const products = Object.assign(
+		{},
+		...data.allPrismicProduct.nodes.map((product) => ({
+			[product.data.type]: product.data,
+		}))
+	);
+	//
 	return (
 		<>
 			{/* set the page metadata */}
 			<SEO title="Welcome to the Challenge" />
 
 			<Container>
-				<div
-					css={css`
-						margin-bottom: 1rem;
-					`}
-				>
-					I want {item.quantity.text} of{` `}
-					{item.title.text}, please.
-				</div>
-				<div
-					css={css`
-						font-family: Jura;
-					`}
-				>
-					{item.description.text}
-				</div>
-				<div
-					css={css`
-						font-family: Jura;
-						height: 370px;
-						width: 330px;
-						overflow: hidden;
-						position: relative;
-					`}
-				>
-					<img 
-						css={css`
-							position: absolute;
-							bottom: 0;
-							width: 100%;
-						`}
-						src="https://images.prismic.io/developer-challenge/6ba17dc8-723d-463b-ae5c-b0ba6579f153_deva-williamson-ymy-t_sKkNk-unsplash.jpg?auto=format%2Ccompress&rect=0%2C0%2C640%2C960&w=600&h=900&fit=max&q=50" 
-						alt="Yellow cupcakes with green paper wrap and rainbow frosting"
-					></img>
-				</div>
-				<Logo />
+				<ActiveProductProvider>
+					<LogoContainer />
+					<CallbackProvider>
+						<Card products={products} />
+					</CallbackProvider>
+					<Navbar />
+				</ActiveProductProvider>
 			</Container>
 		</>
 	);
@@ -88,19 +74,25 @@ export default Index;
 // ========= QUERY =========
 // use gatsby's graphql query to get required data
 export const query = graphql`
-	query MyQuery {
-		prismicProduct(data: {type: {eq: "DESSERT"}}) {
-			id
-			data {
-			title {
-				text
-			}
-			quantity {
-				text
-			}
-			description {
-				text
-			}
+	query {
+		allPrismicProduct {
+			nodes {
+				data {
+					title {
+						text
+					}
+					description {
+						text
+					}
+					image {
+						alt
+						url
+					}
+					quantity {
+						text
+					}
+					type
+				}
 			}
 		}
 	}
