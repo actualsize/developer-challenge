@@ -35,15 +35,6 @@ Components that are used for rendering elements (div, nav, img, ul, li, button, 
 
 Components acting as context providers.
 
-### Parents/Children
-
-````mermaid
-graph TD
-
-    index.jsx/Container --> LogoContainer
-
-```
-
 ## Instructions
 
 1. Clone this repo to your machine.
@@ -108,4 +99,7 @@ Recreate this page, using Gatsby & React (with functional components and hooks):
     	"eslint.run": "onType"
     }
     ```
-````
+
+```
+
+```
