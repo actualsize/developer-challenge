@@ -22,6 +22,8 @@ export default function OrderButton({ product }) {
 				background-color: #da55bd;
 				color: #fff;
 				border: none;
+
+				cursor: pointer;
 			`}
 			type="button"
 			onClick={() => {

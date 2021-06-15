@@ -32,6 +32,7 @@ export default function Navbutton({ productType }) {
 
 					border-radius: 15px;
 
+					cursor: pointer;
 					user-select: none;
 				`}
 				style={{

@@ -1,5 +1,6 @@
 // nav button using font awesome
 import React from "react";
+import { css } from "@emotion/core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Iconbutton({ iconType, consoleMessage }) {
@@ -10,6 +11,9 @@ export default function Iconbutton({ iconType, consoleMessage }) {
 				size="xs"
 				color="white"
 				transform="up-2.5"
+				css={css`
+					cursor: pointer;
+				`}
 				onClick={() => {
 					console.log(consoleMessage);
 				}}
