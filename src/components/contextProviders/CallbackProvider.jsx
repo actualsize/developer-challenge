@@ -1,6 +1,5 @@
-// here we utilize useContext with useState to set a
-// callback function in the Card component that will
-// later be used by the OrderButton
+// here we utilize useContext with useState to allow a
+// callback function to be shared through the Card and OrderButton components
 import React, { useContext, useState } from "react";
 
 const CallbackContext = React.createContext();
@@ -16,8 +15,8 @@ export function useCallbackUpdateContext() {
 }
 
 export default function CallbackProvider({ children }) {
-	// here we wrap our context providers in the ActiveProductProvider componenent
-	// children can then access the state and setState function as needed
+	// here we wrap our context providers in the CallbackProvider componenent
+	// children can then access the state and setState function through this component
 
 	// set initial state for callback function using an empty function as the initial state variable
 	const [callback, setCallback] = useState(() => () => {});

@@ -1,9 +1,9 @@
-// nav button using font awesome
+// nav button using font awesome icon and console message as props
 import React from "react";
 import { css } from "@emotion/core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function Iconbutton({ iconType, consoleMessage }) {
+export default function IconButton({ iconType, consoleMessage }) {
 	return (
 		<li>
 			<FontAwesomeIcon

@@ -10,18 +10,20 @@ Order, User, and Cart buttons trigger a console log.
 
 ## Strategy
 
-This project uses React's useContext hook to handle information between components.
+This project uses React's useContext hook to handle information between components. Context providers are encapsulated in provider components.
 
-Context provider components are used for:
+Provider components are used for:
 
--   Tracking and updating the active product flag for rendering the card component and nav buttons.
--   Sharing a callback function between the card component and the order button component.
+-   Tracking and updating the active product flag for the card component and nav buttons.
+-   Sharing a callback function between the card component and the order button component as a state variable.
 
-React's useState hook is used to initialize and set the data being provided by the context providers.
+React's useState hook is used to initialize state variables and setState functions that are provided by the provider components through the encapsulated contexts.
 
-See `src\components\contextProviders` for the context provider definitions.
+See `src\components\contextProviders` for the provider components' definitions.
 
 See `src\pages\index.jsx` to see how providers wrap the relevant child components.
+
+See `Card.jsx`, `OrderButton.jsx`, and `NavButton.jsx` in `src\components\elementComponents` for more information on how they use the relevant provider components.
 
 ## Project Structure
 
@@ -32,6 +34,15 @@ Components that are used for rendering elements (div, nav, img, ul, li, button, 
 ### Context Providers | `src\components\contextProviders`
 
 Components acting as context providers.
+
+### Parents/Children
+
+````mermaid
+graph TD
+
+    index.jsx/Container --> LogoContainer
+
+```
 
 ## Instructions
 
@@ -97,3 +108,4 @@ Recreate this page, using Gatsby & React (with functional components and hooks):
     	"eslint.run": "onType"
     }
     ```
+````

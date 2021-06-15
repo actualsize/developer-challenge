@@ -1,9 +1,11 @@
-// OrderButton in card body. Accesses callback function from context
+// order button in card body
+// accesses callback function from Card component through CallbackProvider
 import React from "react";
 import { css } from "@emotion/core";
 import { useCallbackContext } from "../contextProviders/CallbackProvider";
 
-export default function OrderButton({ product }) {
+export default function Orderbutton({ product }) {
+	// get callback state from CallbackProvider
 	const callBackForCard = useCallbackContext();
 	return (
 		<button
@@ -30,7 +32,7 @@ export default function OrderButton({ product }) {
 				callBackForCard();
 			}}
 		>
-			{/* uses production quantity to render appropriate text */}
+			{/* uses product quantity to render appropriate text */}
 			ORDER {product.quantity.text.toUpperCase()}
 		</button>
 	);

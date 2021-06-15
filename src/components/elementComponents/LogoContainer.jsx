@@ -1,6 +1,5 @@
 // component for wrapping logo in a div
-// useful for setting padding to align logo
-// with end of Card corner radius
+// useful for setting padding to align logo with end of Card corner radius
 import React from "react";
 import { css } from "@emotion/core";
 import { ReactComponent as Logo } from "../../assets/Logo.svg";

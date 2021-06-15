@@ -1,7 +1,7 @@
-// here we utilize useContext with useState to set a
-// global state storing the currently active product to display
+// here we utilize useContext with useState to setup a
+// global flag for the currently active product
 // this is used by the Card component and its children for rendering and
-// the Navbar component for updating and rendering
+// the Navbutton components for updating and rendering
 import React, { useContext, useState } from "react";
 
 const ActiveProductContext = React.createContext();
@@ -18,10 +18,10 @@ export function useActiveProductUpdateContext() {
 
 export default function ActiveProductProvider({ children }) {
 	// here we wrap our context providers in the ActiveProductProvider componenent
-	// children can then access the state and setState function as needed
+	// children can then access the state and setState function through this component
 
 	// set initial state for active product
-	const [activeProduct, setActiveProduct] = useState(`DESSERT`); // set 'DESSERT' as default active product
+	const [activeProduct, setActiveProduct] = useState(`DESSERT`); // set 'DESSERT' as the default active product
 	return (
 		<ActiveProductContext.Provider value={activeProduct}>
 			<ActiveProductUpdateContext.Provider

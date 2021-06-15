@@ -7,7 +7,7 @@ export default function ImageContainer({ product }) {
 		<div
 			className="image-container"
 			css={css`
-				// 600/golden_ratio^2
+				// 600px/golden_ratio^2
 				height: 229px;
 				width: 330px;
 

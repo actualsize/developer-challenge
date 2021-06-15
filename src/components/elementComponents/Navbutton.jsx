@@ -1,5 +1,5 @@
 // nav button for updating displayed content
-// accesses and updates active item through context provider
+// accesses and sets active product through ActiveProductProvider
 import React from "react";
 import { css } from "@emotion/core";
 import {
@@ -7,9 +7,10 @@ import {
 	useActiveProductUpdateContext,
 } from "../contextProviders/ActiveProductProvider";
 
-export default function Navbutton({ productType }) {
-	// state and setState function for active product
+export default function NavButton({ productType }) {
+	// get active product state from ActiveProductProvider
 	const activeProduct = useActiveProductContext();
+	// get setState function from ActiveProductProvider
 	const updateActiveProduct = useActiveProductUpdateContext();
 	return (
 		<li>
@@ -37,6 +38,8 @@ export default function Navbutton({ productType }) {
 				`}
 				style={{
 					backgroundColor:
+						// render button background according to
+						// activeProduct and productType
 						activeProduct === productType
 							? `#DA55BD`
 							: `transparent`,
@@ -45,6 +48,7 @@ export default function Navbutton({ productType }) {
 					updateActiveProduct(productType);
 				}}
 			>
+				{/* text for button */}
 				{productType}
 			</button>
 		</li>

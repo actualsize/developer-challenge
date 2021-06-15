@@ -1,12 +1,12 @@
-// navbar for switching displayed content
+// navbar for wrapping nav items as a ul in div
 import React from "react";
 import { css } from "@emotion/core";
 import {
 	faUserCircle,
 	faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
-import Navbutton from "./Navbutton";
-import Iconbutton from "./Iconbutton";
+import NavButton from "./NavButton";
+import IconButton from "./IconButton";
 
 export default function Navbar() {
 	return (
@@ -17,10 +17,6 @@ export default function Navbar() {
 				bottom: 0;
 			`}
 		>
-			{/* user list of nav items
-			icons only trigger console.log()
-			buttons update active product and 
-			their backgrounds are determined by active product */}
 			<ul
 				className="navbar"
 				css={css`
@@ -37,14 +33,16 @@ export default function Navbar() {
 					list-style-type: none;
 				`}
 			>
-				<Iconbutton
+				{/* pass FA icon type and console message to Iconbutton components */}
+				<IconButton
 					iconType={faUserCircle}
 					consoleMessage="User icon clicked."
 				/>
-				<Navbutton productType="SOUP" />
-				<Navbutton productType="DESSERT" />
-				<Navbutton productType="PET FOOD" />
-				<Iconbutton
+				{/* pass product type to Navbutton components */}
+				<NavButton productType="SOUP" />
+				<NavButton productType="DESSERT" />
+				<NavButton productType="PET FOOD" />
+				<IconButton
 					iconType={faShoppingCart}
 					consoleMessage="Shopping cart icon clicked."
 				/>

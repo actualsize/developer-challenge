@@ -1,7 +1,7 @@
 // component for wrapping card body content in div
 import React from "react";
 import { css } from "@emotion/core";
-import OrderButton from "./OrderButton";
+import Orderbutton from "./OrderButton";
 
 export default function BodyContainer({ product }) {
 	return (
@@ -36,7 +36,7 @@ export default function BodyContainer({ product }) {
 			>
 				{product.description.text}
 			</div>
-			<OrderButton product={product} />
+			<Orderbutton product={product} />
 		</div>
 	);
 }

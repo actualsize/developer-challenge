@@ -36,9 +36,9 @@ const Container = styled.div`
 
 // ========= MAIN =========
 const Index = ({ data }) => {
-	// get the product data from prisma
+	// get the product data from prismic
 	// convert nodes array from our graphql query to an object with
-	// the product types as keys amd product data as values
+	// the product types as keys and product data as values
 	// should make it easier to access data via product type
 	const products = Object.assign(
 		{},
@@ -54,11 +54,11 @@ const Index = ({ data }) => {
 
 			<Container>
 				<LogoContainer />
-				{/* context provider for the currently active product */}
+				{/* context providers for the active product state and setState function */}
 				<ActiveProductProvider>
-					{/* context provider for callback function between Card and OrderButton */}
+					{/* context providers for callback function state and setState function  */}
 					<CallbackProvider>
-						{/* Card component takes products object as prop */}
+						{/* pass products object to Card component */}
 						<Card products={products} />
 					</CallbackProvider>
 					<Navbar />
