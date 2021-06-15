@@ -1,4 +1,4 @@
-// nav button for updating displayed content
+// nav button for updating content
 // accesses and sets active product through ActiveProductProvider
 import React from "react";
 import { css } from "@emotion/core";
