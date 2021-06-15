@@ -1,12 +1,13 @@
 import React from "react";
 import { graphql } from "gatsby";
-
 import "normalize.css";
 import styled from "@emotion/styled";
-import { css } from "@emotion/core";
-
 import SEO from "../components/SEO";
-import { ReactComponent as Logo } from "../assets/Logo.svg";
+import ActiveProductProvider from "../components/contextProviders/ActiveProductProvider";
+import CallbackProvider from "../components/contextProviders/CallbackProvider";
+import LogoContainer from "../components/elementComponents/LogoContainer";
+import Card from "../components/elementComponents/Card";
+import Navbar from "../components/elementComponents/NavBar";
 
 // ========= COMPONENTS =========
 
@@ -23,33 +24,45 @@ const Container = styled.div`
 	align-items: center;
 	flex-direction: column;
 
-	background-color: #c0ffee;
+	background-color: #7855da;
 	color: #43d1e7;
 
 	font-family: "Lobster";
 	font-size: 2rem;
+
+	// prevent nav bar from overlapping card if window is resized
+	min-height: 800px;
 `;
 
 // ========= MAIN =========
 const Index = ({ data }) => {
-	// get the product data from prisma
-	const item = data.prismicProduct.data;
+	// get the product data from prismic
+	// convert nodes array from our graphql query to an object with
+	// the product types as keys and product data as values
+	// should make it easier to access data via product type
+	const products = Object.assign(
+		{},
+		...data.allPrismicProduct.nodes.map((product) => ({
+			[product.data.type]: product.data,
+		}))
+	);
 
 	return (
 		<>
 			{/* set the page metadata */}
-			<SEO title="Welcome to the Challenge" />
+			<SEO title="Philip Williamson's Submission" />
 
 			<Container>
-				<div
-					css={css`
-						margin-bottom: 1rem;
-					`}
-				>
-					I want {item.quantity.text} of{` `}
-					{item.title.text}, please.
-				</div>
-				<Logo />
+				<LogoContainer />
+				{/* context providers for the active product state and setState function */}
+				<ActiveProductProvider>
+					{/* context providers for callback function state and setState function  */}
+					<CallbackProvider>
+						{/* pass products object to Card component */}
+						<Card products={products} />
+					</CallbackProvider>
+					<Navbar />
+				</ActiveProductProvider>
 			</Container>
 		</>
 	);
@@ -61,14 +74,23 @@ export default Index;
 // use gatsby's graphql query to get required data
 export const query = graphql`
 	query {
-		prismicProduct(data: { type: { eq: "SOUP" } }) {
-			id
-			data {
-				title {
-					text
-				}
-				quantity {
-					text
+		allPrismicProduct {
+			nodes {
+				data {
+					title {
+						text
+					}
+					description {
+						text
+					}
+					image {
+						alt
+						url
+					}
+					quantity {
+						text
+					}
+					type
 				}
 			}
 		}
