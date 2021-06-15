@@ -1,7 +1,8 @@
 // component for wrapping card body content in div
+// uses product data object as a prop
 import React from "react";
 import { css } from "@emotion/core";
-import Orderbutton from "./OrderButton";
+import OrderButton from "./OrderButton";
 
 export default function BodyContainer({ product }) {
 	return (
@@ -36,7 +37,7 @@ export default function BodyContainer({ product }) {
 			>
 				{product.description.text}
 			</div>
-			<Orderbutton product={product} />
+			<OrderButton product={product} />
 		</div>
 	);
 }

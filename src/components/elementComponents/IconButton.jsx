@@ -1,4 +1,4 @@
-// nav button using FA icon and console message as props
+// icon button using Font Awesome icon type and console message as props
 import React from "react";
 import { css } from "@emotion/core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

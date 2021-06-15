@@ -4,7 +4,7 @@ import React from "react";
 import { css } from "@emotion/core";
 import { useCallbackContext } from "../contextProviders/CallbackProvider";
 
-export default function Orderbutton({ product }) {
+export default function OrderButton({ product }) {
 	// get callback state from CallbackProvider
 	const callBackForCard = useCallbackContext();
 	return (

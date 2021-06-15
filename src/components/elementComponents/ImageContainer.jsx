@@ -1,4 +1,5 @@
 // component for wrapping card image in div
+// uses product data object as a prop
 import React from "react";
 import { css } from "@emotion/core";
 

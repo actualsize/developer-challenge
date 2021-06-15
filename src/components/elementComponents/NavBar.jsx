@@ -33,12 +33,12 @@ export default function Navbar() {
 					list-style-type: none;
 				`}
 			>
-				{/* pass FA icon type and console message to Iconbutton components */}
+				{/* pass FA icon type and console message to IconButton components */}
 				<IconButton
 					iconType={faUserCircle}
 					consoleMessage="User icon clicked."
 				/>
-				{/* pass product type to Navbutton components */}
+				{/* pass product type to NavButton components */}
 				<NavButton productType="SOUP" />
 				<NavButton productType="DESSERT" />
 				<NavButton productType="PET FOOD" />

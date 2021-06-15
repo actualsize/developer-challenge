@@ -1,5 +1,6 @@
 // nav button for updating content
 // accesses and sets active product through ActiveProductProvider
+// uses product type as a prop
 import React from "react";
 import { css } from "@emotion/core";
 import {
@@ -10,7 +11,7 @@ import {
 export default function NavButton({ productType }) {
 	// get active product state from ActiveProductProvider
 	const activeProduct = useActiveProductContext();
-	// get setState function from ActiveProductProvider
+	// get active product setState function from ActiveProductProvider
 	const updateActiveProduct = useActiveProductUpdateContext();
 	return (
 		<li>
