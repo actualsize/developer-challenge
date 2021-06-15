@@ -29,6 +29,9 @@ const Container = styled.div`
 
 	font-family: "Lobster";
 	font-size: 2rem;
+
+	// prevent nav bar from overlapping card if window is resized
+	min-height: 800px;
 `;
 
 // ========= MAIN =========
