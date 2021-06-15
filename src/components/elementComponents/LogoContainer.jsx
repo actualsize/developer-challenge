@@ -3,7 +3,7 @@
 // with end of Card corner radius
 import React from "react";
 import { css } from "@emotion/core";
-import { ReactComponent as Logo } from "../assets/Logo.svg";
+import { ReactComponent as Logo } from "../../assets/Logo.svg";
 
 export default function LogoContainer() {
 	return (

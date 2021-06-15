@@ -3,11 +3,11 @@ import { graphql } from "gatsby";
 import "normalize.css";
 import styled from "@emotion/styled";
 import SEO from "../components/SEO";
-import ActiveProductProvider from "../contextProviders/ActiveProductProvider";
-import CallbackProvider from "../contextProviders/CallbackProvider";
-import LogoContainer from "../components/LogoContainer";
-import Card from "../components/Card";
-import Navbar from "../components/NavBar";
+import ActiveProductProvider from "../components/contextProviders/ActiveProductProvider";
+import CallbackProvider from "../components/contextProviders/CallbackProvider";
+import LogoContainer from "../components/elementComponents/LogoContainer";
+import Card from "../components/elementComponents/Card";
+import Navbar from "../components/elementComponents/NavBar";
 
 // ========= COMPONENTS =========
 
